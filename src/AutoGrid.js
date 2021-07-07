@@ -1,6 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Checkbox, Typography, Paper, Grid, FormControlLabel, InputLabel, MenuItem, FormHelperText, FormControl, Select, TextField } from '@material-ui/core';
+import styled from "styled-components";
+
+import { Midi } from 'react-abc';
 
 import Abcjs from './Abcjs';
 
@@ -17,14 +20,35 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+const MidiContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  border-radius: 0.2rem;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 3rem;
+  width: 100%;
+  transition: opacity 0.1s ease-in-out;
+`;
+
 export default function AutoGrid() {
     const classes = useStyles();
     const [key, setkey] = React.useState('C');
     const [minor, setminor] = React.useState(false);
     const [cpclef, setcpclef] = React.useState('Treble');
     const [cfclef, setcfclef] = React.useState('Treble');
-    const [cpnotes, setcpnotes] = React.useState('z');
-    const [cfnotes, setcfnotes] = React.useState('z');
+    const [cpnotes, setcpnotes] = React.useState('');
+    const [cfnotes, setcfnotes] = React.useState('');
+
+    const abc = `                    
+L:1/1
+K:${key + (minor ? 'm' : '')}
+V: 1 clef=${cfclef.toLowerCase()}
+${cfnotes}
+V: 2 clef=${cpclef.toLowerCase()}
+${cpnotes}
+    `
 
     return (
         <div className={classes.root}>
@@ -143,17 +167,14 @@ export default function AutoGrid() {
                     </Paper>
                 </Grid>
             </Grid>
-              
-            <Abcjs
-                abcNotation={`                    
-L:1/1
-K:${key + (minor ? 'm' : '')}
-V: 1 clef=${cfclef.toLowerCase()}
-${cfnotes}
-V: 1 clef=${cpclef.toLowerCase()}
-${cpnotes}
-            `}
+            
+            <br />
+            <Midi
+                notation={abc}
+                key={abc}
+                midiParams={{ qpm: 222 }}
             />
+            <Abcjs abcNotation={abc} />
         </div>
     );
 }
