@@ -10,6 +10,7 @@ import AutoGrid from './AutoGrid';
 import Preview from './Preview';
 import DGrid from './DGrid';
 import Appbar from './Appbar';
+import Profile from './Profile';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -25,27 +26,17 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function getSteps() {
-    return ['Input', 'Preview', 'Grade'];
-}
-
-function getStepContent(stepIndex) {
-    switch (stepIndex) {
-        case 0:
-            return <AutoGrid />;
-        case 1:
-            return <Preview />;
-        case 2:
-            return <DGrid />;
-        default:
-            return 'Unknown stepIndex';
-    }
+const stages = {
+    Input: <AutoGrid />,
+    Grade: <DGrid />,
+    // Team: <Profile />,
 }
 
 export default function HorizontalLabelPositionBelowStepper() {
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
-    const steps = getSteps();
+    const steps = Object.keys(stages);
+    const contents = Object.values(stages);
 
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -59,9 +50,41 @@ export default function HorizontalLabelPositionBelowStepper() {
         setActiveStep(0);
     };
 
+    function Last() {
+        return (
+            <div>
+                <Button onClick={handleReset}>Reset</Button>
+
+                <Typography className={classes.instructions}>
+                    All steps completed
+                </Typography>
+
+                <Profile />
+            </div>
+        );
+    }
+
+    function StepperTop() {
+        return (            
+            <div>
+                <Button
+                    disabled={activeStep === 0}
+                    onClick={handleBack}
+                    className={classes.backButton}
+                >
+                    Back
+                </Button>
+                <Button variant="contained" color="primary" onClick={handleNext}>
+                    {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                </Button>
+            </div>
+        );
+    }
+
     return (
         <div>
             <Appbar />
+
             <div className={classes.root}>
                 <Stepper activeStep={activeStep} alternativeLabel>
                     {steps.map((label) => (
@@ -70,32 +93,18 @@ export default function HorizontalLabelPositionBelowStepper() {
                         </Step>
                     ))}
                 </Stepper>
+
                 <div>
-                    {activeStep === steps.length ? (
+                    {activeStep === steps.length ? <Last /> : (
                         <div>
-                            <Typography className={classes.instructions}>All steps completed</Typography>
-                            <Button onClick={handleReset}>Reset</Button>
-                        </div>
-                    ) : (
-                        <div>
-                            <div>
-                                <Button
-                                    disabled={activeStep === 0}
-                                    onClick={handleBack}
-                                    className={classes.backButton}
-                                >
-                                    Back
-                                </Button>
-                                <Button variant="contained" color="primary" onClick={handleNext}>
-                                    {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                                </Button>
-                            </div>
+                            <StepperTop />
+
                             <Typography
                                 className={classes.instructions}
                                 variant='h3'
                             >
                                 {steps[activeStep]}
-                                {getStepContent(activeStep)}
+                                {contents[activeStep]}
                             </Typography>
                         </div>
                     )}

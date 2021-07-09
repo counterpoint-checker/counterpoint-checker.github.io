@@ -172,7 +172,7 @@ ${cpnotes}
             <Midi
                 notation={abc}
                 key={abc}
-                midiParams={{ qpm: 222 }}
+                midiParams={{ qpm: 333 }}
             />
             <Abcjs abcNotation={abc} />
         </div>
