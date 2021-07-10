@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
-import { Link } from '@material-ui/core';
+import { Link, Grid } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -36,28 +36,66 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function MediaControlCard() {
+const team = [
+    {
+        name: 'Jason Zhang',
+        school: 'UMich 2024',
+        major: 'Composition and CS',
+        linkedin: "https://www.linkedin.com/in/george-fane/",
+        github: "https://github.com/zhangjt1",
+        site: "https://www.georgefane.com/",
+        pic: "https://media-exp3.licdn.com/dms/image/C4E03AQGLANbNVmkUHg/profile-displayphoto-shrink_800_800/0/1604624377309?e=1631145600&v=beta&t=xdriNg9aE79ymDdJ_AwOVA14VcyC4zAA8i8Y40xh6ew",
+    },
+    {
+        name: 'George Fane',
+        school: 'UMich 2024',
+        major: 'Business and CS',
+        linkedin: "https://www.linkedin.com/in/george-fane/",
+        github: "https://github.com/GeorgeFane",
+        site: "https://www.georgefane.com/",
+        pic: "https://avatars.githubusercontent.com/u/39439818?v=4",
+    },
+    {
+        name: 'Alex Beloiu',
+        school: 'UMich 2024',
+        major: 'CS',
+        linkedin: "https://www.linkedin.com/in/alexandru-beloiu/",
+        github: "https://github.com/beloiual",
+        site: "https://beloiu-portfolio.herokuapp.com/",
+        pic: "https://avatars.githubusercontent.com/u/69057074?v=4",
+    },
+    {
+        name: 'Yongwei Che',
+        school: 'Princeton 2024',
+        major: 'CS',
+        linkedin: "https://www.linkedin.com/in/yongwei-che-66525b19b/",
+        github: "https://github.com/YongweiChe",
+        site: "yongweiche.github.io",
+        pic: "https://media-exp3.licdn.com/dms/image/C4E03AQEKUPa2GPYPHg/profile-displayphoto-shrink_200_200/0/1590019973658?e=1631145600&v=beta&t=Sy30H-36UXN-t5fgcmCuSPhKO-7-Kqcqc3PGndEQN60",
+    },
+]
+
+function MediaControlCard({ row }) {
     const classes = useStyles();
     const theme = useTheme();
     const preventDefault = (event) => event.preventDefault();
 
     return (
         <Card className={classes.root}>
-            <div className={classes.details}>
                 <CardContent className={classes.content}>
                     <Typography component="h5" variant="h5">
-                        George Fane
+                        {row.name}
                     </Typography>
                     <Typography variant="subtitle1">
-                        UMich 2024
+                        {row.school}
                     </Typography>
                     <Typography variant="subtitle1">
-                        Business and CS
+                        {row.major}
                     </Typography>
 
                     <Typography>
                         <Link
-                            href="https://www.linkedin.com/in/george-fane/"
+                            href={row.linkedin}
                             target='_blank'
                         >
                             LinkedIn
@@ -66,7 +104,7 @@ export default function MediaControlCard() {
 
                     <Typography>
                         <a
-                            href="https://github.com/GeorgeFane"
+                            href={row.github}
                             target='_blank'
                         >
                             GitHub
@@ -75,19 +113,31 @@ export default function MediaControlCard() {
 
                     <Typography>
                         <a
-                            href="https://www.georgefane.com/"
+                            href={row.site}
                             target='_blank'
                         >
                             Website
                         </a>
                     </Typography>
                 </CardContent>
-            </div>
             <CardMedia
                 className={classes.cover}
-                image="https://avatars.githubusercontent.com/u/39439818?v=4"
-                title="Live from space album cover"
+                image={row.pic}
             />
         </Card>
     );
 }
+
+function Cards() {
+    return (
+        <Grid container spacing={3}>        
+            {team.map(row => (
+                <Grid item xs>
+                    <MediaControlCard row={row} />
+                </Grid>
+            ))};
+        </Grid>
+    );    
+}
+
+export default Cards;
