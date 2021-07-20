@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Ctrpt from './Ctrpt';
+import App from './Ctrpt';
 
 ReactDOM.render(
-    <Ctrpt />,
+    <App />,
     document.getElementById('root')
 );

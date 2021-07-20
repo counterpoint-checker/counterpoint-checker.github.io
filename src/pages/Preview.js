@@ -1,14 +1,18 @@
 import { Typography, Paper } from '@material-ui/core';
 
-export default function Preview() {
-    return (
-        <Paper>
-            <img src='https://www.aboutmusictheory.com/wp-content/uploads/2012/04/counterpoint.png' />
-            
-            <br />
-            <br />
+import { Midi } from 'react-abc';
+import Abcjs from './Abcjs';
 
-            <audio controls />
-        </Paper>
+export default function Preview(props) {
+    const abc = props.abc();
+    return (
+        <div>
+            <Midi
+                notation={abc}
+                key={abc}
+                midiParams={{ qpm: 333 }}
+            />
+            <Abcjs abcNotation={abc} />
+        </div>
     );
 }

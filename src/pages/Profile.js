@@ -38,24 +38,6 @@ const useStyles = makeStyles((theme) => ({
 
 const team = [
     {
-        name: 'Jason Zhang',
-        school: 'UMich 2024',
-        major: 'Composition and CS',
-        linkedin: "https://www.linkedin.com/in/jason-zhang-2755ba1b9/",
-        github: "https://github.com/zhangjt1",
-        site: "https://counterpoint-checker.github.io/",
-        pic: "https://media-exp3.licdn.com/dms/image/C4E03AQGLANbNVmkUHg/profile-displayphoto-shrink_800_800/0/1604624377309?e=1631145600&v=beta&t=xdriNg9aE79ymDdJ_AwOVA14VcyC4zAA8i8Y40xh6ew",
-    },
-    {
-        name: 'George Fane',
-        school: 'UMich 2024',
-        major: 'Business and CS',
-        linkedin: "https://www.linkedin.com/in/george-fane/",
-        github: "https://github.com/GeorgeFane",
-        site: "http://georgefane.github.io/",
-        pic: "https://avatars.githubusercontent.com/u/39439818?v=4",
-    },
-    {
         name: 'Alex Beloiu',
         school: 'UMich 2024',
         major: 'CS',
@@ -72,6 +54,24 @@ const team = [
         github: "https://github.com/YongweiChe",
         site: "https://yongweiche.github.io/",
         pic: "https://media-exp3.licdn.com/dms/image/C4E03AQEKUPa2GPYPHg/profile-displayphoto-shrink_200_200/0/1590019973658?e=1631145600&v=beta&t=Sy30H-36UXN-t5fgcmCuSPhKO-7-Kqcqc3PGndEQN60",
+    },
+    {
+        name: 'George Fane',
+        school: 'UMich 2024',
+        major: 'Business and CS',
+        linkedin: "https://www.linkedin.com/in/george-fane/",
+        github: "https://github.com/GeorgeFane",
+        site: "http://georgefane.github.io/",
+        pic: "https://avatars.githubusercontent.com/u/39439818?v=4",
+    },
+    {
+        name: 'Jason Zhang',
+        school: 'UMich 2024',
+        major: 'Composition and CS',
+        linkedin: "https://www.linkedin.com/in/jason-zhang-2755ba1b9/",
+        github: "https://github.com/zhangjt1",
+        site: "https://counterpoint-checker.github.io/",
+        pic: "https://media-exp3.licdn.com/dms/image/C4E03AQGLANbNVmkUHg/profile-displayphoto-shrink_800_800/0/1604624377309?e=1631145600&v=beta&t=xdriNg9aE79ymDdJ_AwOVA14VcyC4zAA8i8Y40xh6ew",
     },
 ]
 

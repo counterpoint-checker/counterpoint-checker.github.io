@@ -14,26 +14,20 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
     },
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
-    title: {
-        flexGrow: 1,
-    },
 }));
 
 export default function ButtonAppBar() {
     const classes = useStyles();
 
     return (
-        <div className={classes.root}>
+        <div>
             <AppBar position="static">
                 <Toolbar>
-                    <div  className={classes.title}>
-                        <img height='77' src='https://media.discordapp.net/attachments/705838282440835164/866890707494109194/logo1_no_background.png?width=1440&height=417' />
+                    <div className={classes.root}>
+                        <img width='222' src='https://media.discordapp.net/attachments/705838282440835164/866890707494109194/logo1_no_background.png' />
                     </div>
 
-                    <Typography variant="h6" className={classes.title}>
+                    <Typography variant="h6">
                         Alex Beloiu, Yongwei Che, George Fane, Jason Zhang
                     </Typography>
 
