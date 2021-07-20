@@ -8,6 +8,8 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { GitHub } from '@material-ui/icons';
 
+import Login from './Login';
+
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -27,18 +29,23 @@ export default function ButtonAppBar() {
         <div className={classes.root}>
             <AppBar position="static">
                 <Toolbar>
-                    <Typography variant="h4" className={classes.title}>
-                        Counterpoint Checker
-                    </Typography>
+                    <div  className={classes.title}>
+                        <img height='77' src='https://media.discordapp.net/attachments/705838282440835164/866890707494109194/logo1_no_background.png?width=1440&height=417' />
+                    </div>
+
                     <Typography variant="h6" className={classes.title}>
                         Alex Beloiu, Yongwei Che, George Fane, Jason Zhang
-                    </Typography>    
-                    <Button 
-                        variant="link"
-                        startIcon={<GitHub />}
+                    </Typography>
+
+                    <IconButton
+                        color='inherit'
                         href="https://github.com/counterpoint-checker"
                         target='_blank'
-                    />
+                    >
+                        <GitHub fontSize='large' />
+                    </IconButton>
+
+                    <Login />
                 </Toolbar>                
             </AppBar>
         </div>

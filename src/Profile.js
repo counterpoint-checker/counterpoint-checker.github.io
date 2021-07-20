@@ -41,9 +41,9 @@ const team = [
         name: 'Jason Zhang',
         school: 'UMich 2024',
         major: 'Composition and CS',
-        linkedin: "https://www.linkedin.com/in/george-fane/",
+        linkedin: "https://www.linkedin.com/in/jason-zhang-2755ba1b9/",
         github: "https://github.com/zhangjt1",
-        site: "https://www.georgefane.com/",
+        site: "https://counterpoint-checker.github.io/",
         pic: "https://media-exp3.licdn.com/dms/image/C4E03AQGLANbNVmkUHg/profile-displayphoto-shrink_800_800/0/1604624377309?e=1631145600&v=beta&t=xdriNg9aE79ymDdJ_AwOVA14VcyC4zAA8i8Y40xh6ew",
     },
     {
@@ -52,7 +52,7 @@ const team = [
         major: 'Business and CS',
         linkedin: "https://www.linkedin.com/in/george-fane/",
         github: "https://github.com/GeorgeFane",
-        site: "https://www.georgefane.com/",
+        site: "http://georgefane.github.io/",
         pic: "https://avatars.githubusercontent.com/u/39439818?v=4",
     },
     {
@@ -70,7 +70,7 @@ const team = [
         major: 'CS',
         linkedin: "https://www.linkedin.com/in/yongwei-che-66525b19b/",
         github: "https://github.com/YongweiChe",
-        site: "yongweiche.github.io",
+        site: "https://yongweiche.github.io/",
         pic: "https://media-exp3.licdn.com/dms/image/C4E03AQEKUPa2GPYPHg/profile-displayphoto-shrink_200_200/0/1590019973658?e=1631145600&v=beta&t=Sy30H-36UXN-t5fgcmCuSPhKO-7-Kqcqc3PGndEQN60",
     },
 ]
@@ -82,44 +82,45 @@ function MediaControlCard({ row }) {
 
     return (
         <Card className={classes.root}>
-                <CardContent className={classes.content}>
-                    <Typography component="h5" variant="h5">
-                        {row.name}
-                    </Typography>
-                    <Typography variant="subtitle1">
-                        {row.school}
-                    </Typography>
-                    <Typography variant="subtitle1">
-                        {row.major}
-                    </Typography>
+            <CardContent className={classes.content}>
+                <Typography component="h5" variant="h5">
+                    {row.name}
+                </Typography>
+                <Typography variant="subtitle1">
+                    {row.school}
+                </Typography>
+                <Typography variant="subtitle1">
+                    {row.major}
+                </Typography>
 
-                    <Typography>
-                        <Link
-                            href={row.linkedin}
-                            target='_blank'
-                        >
-                            LinkedIn
-                        </Link>
-                    </Typography>
+                <Typography>
+                    <Link
+                        href={row.linkedin}
+                        target='_blank'
+                    >
+                        LinkedIn
+                    </Link>
+                </Typography>
 
-                    <Typography>
-                        <a
-                            href={row.github}
-                            target='_blank'
-                        >
-                            GitHub
-                        </a>
-                    </Typography>
+                <Typography>
+                    <a
+                        href={row.github}
+                        target='_blank'
+                    >
+                        GitHub
+                    </a>
+                </Typography>
 
-                    <Typography>
-                        <a
-                            href={row.site}
-                            target='_blank'
-                        >
-                            Website
-                        </a>
-                    </Typography>
-                </CardContent>
+                <Typography>
+                    <a
+                        href={row.site}
+                        target='_blank'
+                    >
+                        Website
+                    </a>
+                </Typography>
+            </CardContent>
+        
             <CardMedia
                 className={classes.cover}
                 image={row.pic}
