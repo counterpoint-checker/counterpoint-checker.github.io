@@ -6,11 +6,12 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-import AutoGrid from './AutoGrid';
-import Preview from './Preview';
-import DGrid from './DGrid';
-import Appbar from './Appbar';
-import Profile from './Profile';
+import Appbar from './appbar/Appbar';
+
+import Form from './pages/Form';
+import Preview from './pages/Preview';
+import DGrid from './pages/DGrid';
+import Profile from './pages/Profile';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -27,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const stages = {
-    Input: <AutoGrid />,
+    Input: <Form />,
     Grade: <DGrid />,
     // Team: <Profile />,
 }

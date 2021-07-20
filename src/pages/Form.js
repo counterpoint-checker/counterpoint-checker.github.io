@@ -4,8 +4,15 @@ import { Checkbox, Typography, Paper, Grid, FormControlLabel, InputLabel, MenuIt
 import styled from "styled-components";
 
 import { Midi } from 'react-abc';
-
 import Abcjs from './Abcjs';
+import { AbcNotation } from "@tonaljs/tonal";
+
+function toAbc(notes) {
+    // notes is a string of space-separated notes like A4 Bb5
+    return notes.split(' ').map(note => (
+        AbcNotation.scientificToAbcNotation(note)
+    )).join(' ');
+}
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -45,10 +52,11 @@ export default function AutoGrid() {
 L:1/1
 K:${key + (minor ? 'm' : '')}
 V: 1 clef=${cfclef.toLowerCase()}
-${cfnotes}
+${toAbc(cfnotes)}
 V: 2 clef=${cpclef.toLowerCase()}
-${cpnotes}
+${toAbc(cpnotes)}
     `
+    console.log(abc)
 
     return (
         <div className={classes.root}>

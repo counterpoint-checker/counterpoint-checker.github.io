@@ -1,2 +1,3 @@
 /node_modules
-src/oauth2.json
+/build
+src/appbar/oauth2.json
