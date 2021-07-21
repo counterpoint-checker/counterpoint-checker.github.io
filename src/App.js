@@ -10,17 +10,21 @@ import Appbar from './appbar/Appbar';
 
 import Form from './pages/Form';
 import Preview from './pages/Preview';
-import DGrid from './pages/DGrid';
+import Graded from './pages/Graded';
 import Profile from './pages/Profile';
-import { renderAbc } from 'abcjs';
 
-import { AbcNotation } from "@tonaljs/tonal";
+import { AbcNotation, Midi } from "@tonaljs/tonal";
 
 function toAbc(notes) {
     // notes is a string of space-separated notes like A4 Bb5
     return notes.split(' ').map(note => (
         AbcNotation.scientificToAbcNotation(note)
     )).join(' | ');
+}
+
+function toMidi(notes) {
+    // notes is a string of space-separated notes like A4 Bb5
+    return notes.split(' ').map(note => Midi.toMidi(note));
 }
 
 const useStyles = (theme) => ({
@@ -48,8 +52,8 @@ class App extends React.Component {
             key: 'C',
             clef1: 'Treble',
             clef2: 'Treble',
-            notes1: '',
-            notes2: '',
+            notes1: 'c4 d4 e4 f4 g4 a4 b4 c5',
+            notes2: 'c4 d4 e4 f4 g4 a4 b4 c5',
         }
 
         // 1 MEANS CANTUS FIRMUS
@@ -80,6 +84,11 @@ V: 2 clef=${this.state.clef2.toLowerCase()}
 ${toAbc(this.state.notes2)}
     `);
 
+    midi = () => ([
+        toMidi(this.state.notes1),
+        toMidi(this.state.notes2),
+    ])
+
     stages = () => ({
         Input: <div>
             <Form
@@ -98,7 +107,7 @@ ${toAbc(this.state.notes2)}
             <Preview abc={this.abc} />
         </div>,
         Preview: <Preview abc={this.abc} />,
-        Grade: <DGrid />,
+        Grade: <Graded midi={this.midi} key1={this.state.key} />,
         Team: <Profile />,
     });
 
@@ -107,17 +116,14 @@ ${toAbc(this.state.notes2)}
         const length = Object.keys(this.stages()).length;
         return (            
             <div>
-                {activeStep === length - 1 ? (
-                    <Button onClick={this.handleReset}>Reset</Button>
-                ) : (    
-                    <Button
-                        disabled={activeStep === 0}
-                        onClick={this.handleBack}
-                        className={classes.backButton}
-                    >
-                        Back
-                    </Button>
-                )}                
+                <Button
+                    disabled={activeStep === 0}
+                    onClick={activeStep === length - 1 ?
+                        this.handleReset : this.handleBack}
+                    className={classes.backButton}
+                >
+                    {activeStep === length - 1 ? 'Reset' : 'Back'}
+                </Button>
 
                 <Button
                     disabled={activeStep === length - 1}

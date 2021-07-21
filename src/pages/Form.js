@@ -66,7 +66,6 @@ function NotesGrid(props) {
 }
 
 export default function AutoGrid(props) {
-    console.log(props)
     const classes = useStyles();
 
     return (

@@ -1,0 +1,133 @@
+[
+    {
+        "label": "Harmonically good:",
+        "pass": true,
+        "notes": []
+    },
+    {
+        "label": "Melodically good:",
+        "pass": false,
+        "notes": [
+            1
+        ]
+    },
+    {
+        "label": "Ranges good: CF:",
+        "pass": false
+    },
+    {
+        "label": "Ranges good: CP:",
+        "pass": false
+    },
+    {
+        "label": "One peak: CF:",
+        "pass": false
+    },
+    {
+        "label": "One peak: CP:",
+        "pass": false
+    },
+    {
+        "label": "Peaks are not at the same place:",
+        "pass": false
+    },
+    {
+        "label": "Cantus Firmus notes in key",
+        "pass": true,
+        "notes": []
+    },
+    {
+        "label": "CounterPoint notes in key",
+        "pass": true,
+        "notes": []
+    },
+    {
+        "label": "Cantus Firmus Linear:",
+        "pass": true,
+        "notes": "General Trend, Linear Threshold for Each Side of the Peak = 0.590 and 0.985"
+    },
+    {
+        "label": "CounterPoint Linear:",
+        "pass": true,
+        "notes": "General Trend, Linear Threshold for Each Side of the Peak = 0.590 and 0.985"
+    },
+    {
+        "label": "Motion of the Music:",
+        "pass": true,
+        "notes": [
+            "Parallel",
+            "Parallel",
+            "Parallel",
+            "Parallel",
+            "Parallel",
+            "Parallel"
+        ]
+    },
+    {
+        "label": "No Three Parallel Motion in a Row:",
+        "pass": true,
+        "notes": []
+    },
+    {
+        "label": "Perfect Fifths & Octaves:",
+        "pass": false,
+        "notes": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+        ]
+    },
+    {
+        "label": "Hidden Fifths & Octaves:",
+        "pass": true,
+        "notes": []
+    },
+    {
+        "label": "7ths resolve: CF:",
+        "pass": true,
+        "notes": []
+    },
+    {
+        "label": "7ths resolve: CP:",
+        "pass": true,
+        "notes": []
+    },
+    {
+        "label": "Leaps are followed by opposite direction: CF:",
+        "pass": true,
+        "notes": []
+    },
+    {
+        "label": "Leaps are followed by opposite direction: CP:",
+        "pass": true,
+        "notes": []
+    },
+    {
+        "label": "No voice-crossing: ",
+        "pass": true,
+        "notes": []
+    },
+    {
+        "label": "No voice-overlap: ",
+        "pass": false,
+        "notes": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+        ]
+    },
+    {
+        "label": "First interval is good: ",
+        "pass": true
+    },
+    {
+        "label": "Last interval is good: ",
+        "pass": true
+    }
+]
