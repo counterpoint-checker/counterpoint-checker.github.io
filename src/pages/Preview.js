@@ -7,12 +7,12 @@ export default function Preview(props) {
     const abc = props.abc();
     return (
         <div>
+            <Abcjs abcNotation={abc} />
             <Midi
                 notation={abc}
                 key={abc}
                 midiParams={{ qpm: 333 }}
             />
-            <Abcjs abcNotation={abc} />
         </div>
     );
 }

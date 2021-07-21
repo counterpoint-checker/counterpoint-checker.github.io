@@ -81,19 +81,22 @@ ${toAbc(this.state.notes2)}
     `);
 
     stages = () => ({
-        Input: <Form
-            key1 = {this.state.key}
-            clef1 = {this.state.clef1}
-            clef2 = {this.state.clef2}
-            notes1 = {this.state.notes1}
-            notes2 = {this.state.notes2}
+        Input: <div>
+            <Form
+                key1 = {this.state.key}
+                clef1 = {this.state.clef1}
+                clef2 = {this.state.clef2}
+                notes1 = {this.state.notes1}
+                notes2 = {this.state.notes2}
 
-            setKey = {(key) => this.setState({ key })}
-            setClef1 = {(clef1) => this.setState({ clef1 })}
-            setClef2 = {(clef2) => this.setState({ clef2 })}
-            setNotes1 = {(notes1) => this.setState({ notes1 })}
-            setNotes2 = {(notes2) => this.setState({ notes2 })}
-        />,
+                setKey = {(key) => this.setState({ key })}
+                setClef1 = {(clef1) => this.setState({ clef1 })}
+                setClef2 = {(clef2) => this.setState({ clef2 })}
+                setNotes1 = {(notes1) => this.setState({ notes1 })}
+                setNotes2 = {(notes2) => this.setState({ notes2 })}
+            />
+            <Preview abc={this.abc} />
+        </div>,
         Preview: <Preview abc={this.abc} />,
         Grade: <DGrid />,
         Team: <Profile />,

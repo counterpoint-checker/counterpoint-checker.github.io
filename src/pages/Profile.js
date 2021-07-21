@@ -136,7 +136,7 @@ function Cards() {
                 <Grid item xs>
                     <MediaControlCard row={row} />
                 </Grid>
-            ))};
+            ))}
         </Grid>
     );    
 }

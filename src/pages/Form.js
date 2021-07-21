@@ -91,7 +91,17 @@ export default function AutoGrid(props) {
                 <LabelGrid label='Counterpoint' />                
                 <ClefGrid clef={props.clef2} setClef={props.setClef2} />
                 <NotesGrid notes={props.notes2} setNotes={props.setNotes2} />
-                <Grid item xs />
+
+                <Grid item xs>
+                    <Paper className={classes.paper}>
+                        <Typography>
+                            Notes: [note][#,b, ][octave] e.g. C4, C#4
+                        </Typography>
+                        <Typography>
+                            Key: [note][#,b, ][m, ] e.g. C, C#, Cm, C#m
+                        </Typography>
+                    </Paper>
+                </Grid>
             </Grid>
             
         </div>
