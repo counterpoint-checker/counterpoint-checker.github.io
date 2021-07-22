@@ -9,3 +9,4 @@
 ### Graded Page
 * bigger text in table
 * colored checkmarks and x's
+* Machine Learning Integration
