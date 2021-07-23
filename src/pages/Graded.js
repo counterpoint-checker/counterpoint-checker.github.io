@@ -1,19 +1,39 @@
 import * as React from 'react';
-import { DataGrid } from '@material-ui/data-grid';
+import { DataGrid, getThemePaletteMode } from '@material-ui/data-grid';
+import { createMuiTheme, MuiThemeProvider, withStyles } from '@material-ui/core/styles';
+import clsx from 'clsx';
 
 const axios = require('axios');
-// const url = 'https://us-central1-georgefane.cloudfunctions.net/cpoint-api';
 const url = 'https://counterpoint-checker.herokuapp.com/';
-// const url = 'http://127.0.0.1:8081/';
+
+const theme = createMuiTheme({
+  typography: {
+    fontSize: 22
+  },
+});
+
+const useStyles = ({
+    root: {
+        '& .super-app.pass': {
+            backgroundColor: 'rgba(157, 255, 118, 0.49)',
+        },
+        '& .super-app.fail': {
+            backgroundColor: '#d47483',
+        },
+    },
+});
 
 const columns = [
-    { field: 'label', width: 200 },
-    { field: 'pass', type: 'boolean' },
-    { field: 'notes', width: 400 },
-]
-
-// var rows = require('./resp.json');
-// rows.forEach( (row, id) => row.id = id);
+    { field: 'label', width: 333 },
+    { field: 'pass', width: 144, type: 'boolean',
+    cellClassName: (params) =>
+      clsx('super-app', {
+        pass: params.value,
+        fail: !params.value,
+      }),
+     },
+    { field: 'notes', width: 555 },
+];
 
 class DataGridDemo extends React.Component {
     constructor(props) {
@@ -38,20 +58,22 @@ class DataGridDemo extends React.Component {
             cantus_firmus, counterpoint, key, headers
         });
         const rows = resp.data.data.map((row, id) => (
-            { ...row, id: id }
+            { ...row, id }
         ));
         this.setState({ rows });
         console.log(rows);
     }
 
     render() {
+        const { classes } = this.props;
         const { rows } = this.state;
+        const data = { rows, columns, autoHeight: true };
         return rows.length ? (
-            <DataGrid
-                rows={rows}
-                columns={columns}
-                autoHeight
-            />
+            <div className={classes.root}>
+                <MuiThemeProvider theme={theme}>
+                    <DataGrid {...data} />
+                </MuiThemeProvider>
+            </div>
         ) : (
             <div>
                 Grading...
@@ -60,4 +82,4 @@ class DataGridDemo extends React.Component {
     }    
 }
 
-export default DataGridDemo;
+export default withStyles(useStyles)(DataGridDemo);
