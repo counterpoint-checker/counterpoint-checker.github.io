@@ -9,7 +9,7 @@ const url = 'https://counterpoint-checker.herokuapp.com/';
 const columns = [
     { field: 'label', width: 200 },
     { field: 'pass', type: 'boolean' },
-    { field: 'notes', width: 400, valueGetter: (params) => JSON.stringify(params.value) },
+    { field: 'notes', width: 400 },
 ]
 
 // var rows = require('./resp.json');

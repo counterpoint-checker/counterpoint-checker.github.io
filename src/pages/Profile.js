@@ -43,7 +43,7 @@ const team = [
         major: 'CS',
         linkedin: "https://www.linkedin.com/in/alexandru-beloiu/",
         github: "https://github.com/beloiual",
-        site: "https://beloiu-portfolio.herokuapp.com/",
+        site: "https://github.com/beloiual",
         pic: "https://avatars.githubusercontent.com/u/69057074?v=4",
     },
     {
