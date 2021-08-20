@@ -27,7 +27,7 @@ export default function ButtonAppBar() {
                         <img width='222' src='https://media.discordapp.net/attachments/705838282440835164/866890707494109194/logo1_no_background.png' />
                     </div>
 
-                    <Typography className={classes.root} variant="h6">
+                    <Typography className={classes.root} variant="body1">
                         Alex Beloiu, Yongwei Che, George Fane, Jason Zhang
                     </Typography>
 
@@ -36,7 +36,7 @@ export default function ButtonAppBar() {
                         href="https://github.com/counterpoint-checker"
                         target='_blank'
                     >
-                        <GitHub fontSize='large' />
+                        <GitHub />
                     </IconButton>
 
                     <Login />

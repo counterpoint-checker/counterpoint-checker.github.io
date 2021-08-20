@@ -8,6 +8,7 @@ import { Typography, Paper, Grid, Box, MenuItem, TextField, Link } from '@materi
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
+        justifyContent: 'center',
     },
     details: {
         display: 'flex',
@@ -126,8 +127,14 @@ function MediaControlCard({ row }) {
 }
 
 function Cards() {
+    const classes = useStyles();
+
     return (
-        <Grid container spacing={3}>        
+        <Grid container
+            spacing={3}
+            justifyContent='center'
+            className={classes.root}
+        >        
             {team.map(row => (
                 <Grid item>
                     <MediaControlCard row={row} />

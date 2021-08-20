@@ -168,7 +168,6 @@ ${toAbc(this.state.notes2)}
                         className={classes.instructions}
                         variant='h4'
                     >
-                        {steps[activeStep]}
                         {contents[activeStep]}
                     </Typography>
                 </Box>
