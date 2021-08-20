@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Checkbox, Typography, Paper, Grid, FormControlLabel, InputLabel, MenuItem, FormHelperText, FormControl, Select, TextField } from '@material-ui/core';
+import { Typography, Paper, Grid, Box, MenuItem, TextField } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -68,6 +68,13 @@ function NotesGrid(props) {
 export default function AutoGrid(props) {
     const classes = useStyles();
 
+    const lines = [
+        'Notes: [note][#,b, ][octave]',
+        'e.g. C4, C#4',
+        'Key: [note][#,b, ][m, ]',
+        'e.g. C, C#, Cm, C#m',
+    ];
+
     return (
         <div className={classes.root}>
             <Grid container spacing={3}>
@@ -92,14 +99,11 @@ export default function AutoGrid(props) {
                 <NotesGrid notes={props.notes2} setNotes={props.setNotes2} />
 
                 <Grid item xs>
-                    <Paper className={classes.paper}>
+                    {lines.map(line => (
                         <Typography>
-                            Notes: [note][#,b, ][octave] e.g. C4, C#4
+                            {line}
                         </Typography>
-                        <Typography>
-                            Key: [note][#,b, ][m, ] e.g. C, C#, Cm, C#m
-                        </Typography>
-                    </Paper>
+                    ))}
                 </Grid>
             </Grid>
             

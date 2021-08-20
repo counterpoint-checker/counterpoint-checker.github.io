@@ -1,10 +1,13 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import { Typography, Paper, Grid, Box, MenuItem, TextField } from '@material-ui/core';
+
+import { createMuiTheme, MuiThemeProvider, withStyles } from '@material-ui/core/styles';
+import { AbcNotation, Midi } from "@tonaljs/tonal";
 
 import Appbar from './appbar/Appbar';
 
@@ -13,7 +16,25 @@ import Preview from './pages/Preview';
 import Graded from './pages/Graded';
 import Profile from './pages/Profile';
 
-import { AbcNotation, Midi } from "@tonaljs/tonal";
+const useStyles = (theme) => ({
+    root: {
+        width: '100%',
+        padding: theme.spacing(9),
+    },
+    backButton: {
+        marginRight: theme.spacing(1),
+    },
+    instructions: {
+        marginTop: theme.spacing(1),
+        marginBottom: theme.spacing(1),
+    },
+});
+
+const theme = createMuiTheme({
+    typography: {
+        fontSize: 22
+    },
+});
 
 function toAbc(notes) {
     // notes is a string of space-separated notes like A4 Bb5
@@ -26,20 +47,6 @@ function toMidi(notes) {
     // notes is a string of space-separated notes like A4 Bb5
     return notes.split(' ').map(note => Midi.toMidi(note));
 }
-
-const useStyles = (theme) => ({
-    root: {
-        width: '100%',
-        padding: theme.spacing(3),
-    },
-    backButton: {
-        marginRight: theme.spacing(1),
-    },
-    instructions: {
-        marginTop: theme.spacing(1),
-        marginBottom: theme.spacing(1),
-    },
-});
 
 class App extends React.Component {
     constructor(props) {
@@ -143,7 +150,7 @@ ${toAbc(this.state.notes2)}
         const contents = Object.values(this.stages());
 
         return (
-            <div>
+            <MuiThemeProvider theme={theme}>
                 <Appbar />
 
                 <Stepper activeStep={activeStep} alternativeLabel>
@@ -154,19 +161,19 @@ ${toAbc(this.state.notes2)}
                     ))}
                 </Stepper>
 
-                <div className={classes.root}>
+                <Box mx={9}>
                     {this.StepperTop()}
 
                     <Typography
                         className={classes.instructions}
-                        variant='h3'
+                        variant='h4'
                     >
                         {steps[activeStep]}
                         {contents[activeStep]}
                     </Typography>
-                </div>
+                </Box>
             
-            </div>
+            </MuiThemeProvider>
         );
     }
 }

@@ -7,9 +7,9 @@ const axios = require('axios');
 const url = 'https://counterpoint-checker.herokuapp.com/';
 
 const theme = createMuiTheme({
-  typography: {
-    fontSize: 22
-  },
+    typography: {
+        fontSize: 22
+    },
 });
 
 const useStyles = ({
@@ -27,10 +27,10 @@ const columns = [
     { field: 'label', width: 333 },
     { field: 'pass', width: 144, type: 'boolean',
     cellClassName: (params) =>
-      clsx('super-app', {
-        pass: params.value,
-        fail: !params.value,
-      }),
+        clsx('super-app', {
+            pass: params.value,
+            fail: !params.value,
+        }),
      },
     { field: 'notes', width: 555 },
 ];
@@ -67,17 +67,13 @@ class DataGridDemo extends React.Component {
     render() {
         const { classes } = this.props;
         const { rows } = this.state;
-        const data = { rows, columns, autoHeight: true };
-        return rows.length ? (
-            <div className={classes.root}>
-                <MuiThemeProvider theme={theme}>
-                    <DataGrid {...data} />
-                </MuiThemeProvider>
-            </div>
-        ) : (
-            <div>
-                Grading...
-            </div>
+        const data = {
+            rows, columns, autoHeight: true,
+            className: classes.root,
+            loading: !rows.length,
+        };
+        return (
+            <DataGrid {...data} />
         );
     }    
 }

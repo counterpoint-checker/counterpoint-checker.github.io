@@ -1,6 +1,6 @@
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-import abcjsObj from 'abcjs'
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import abcjsObj from 'abcjs';
 
 class Abcjs extends PureComponent {
 
