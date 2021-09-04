@@ -21,7 +21,7 @@ export default function ButtonAppBar() {
 
     return (
         <div>
-            <AppBar position="static">
+            <AppBar>
                 <Toolbar>
                     <div className={classes.root}>
                         <img width='222' src='https://media.discordapp.net/attachments/705838282440835164/866890707494109194/logo1_no_background.png' />
@@ -42,6 +42,8 @@ export default function ButtonAppBar() {
                     <Login />
                 </Toolbar>                
             </AppBar>
+
+            <Toolbar />
         </div>
     );
 }

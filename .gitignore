@@ -2,3 +2,4 @@
 /build
 src/appbar/oauth2.json
 github.sh
+env.json*

@@ -4,7 +4,10 @@ import { createMuiTheme, MuiThemeProvider, withStyles } from '@material-ui/core/
 import clsx from 'clsx';
 
 const axios = require('axios');
-const url = 'https://counterpoint-checker.herokuapp.com/';
+// const url = 'https://counterpoint-checker.herokuapp.com/';
+const url = 'https://us-central1-georgefane.cloudfunctions.net/counterpoint';
+
+const { apikey } = require('../env.json');
 
 const theme = createMuiTheme({
     typography: {
@@ -55,7 +58,8 @@ class DataGridDemo extends React.Component {
         console.log([cantus_firmus, counterpoint, key]);
 
         const resp = await axios.post(url, {
-            cantus_firmus, counterpoint, key, headers
+            cantus_firmus, counterpoint, key, apikey,
+            headers
         });
         const rows = resp.data.data.map((row, id) => (
             { ...row, id }

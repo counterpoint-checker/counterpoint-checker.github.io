@@ -32,7 +32,7 @@ const useStyles = (theme) => ({
 
 const theme = createMuiTheme({
     typography: {
-        fontSize: 22
+        // fontSize: 22
     },
 });
 
@@ -161,11 +161,13 @@ ${toAbc(this.state.notes2)}
                     ))}
                 </Stepper>
 
-                <Box mx={9}>
+                <Box
+                    mx={9}
+                >
                     {this.StepperTop()}
 
                     <Typography
-                        className={classes.instructions}
+                        // className={classes.instructions}
                         variant='h4'
                     >
                         {contents[activeStep]}
