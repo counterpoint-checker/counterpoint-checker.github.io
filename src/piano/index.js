@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import _ from 'lodash';
 import { Piano, KeyboardShortcuts, MidiNumbers } from 'react-piano';
 import 'react-piano/dist/styles.css';
-import { Button } from '@material-ui/core';
+import { Button, TextField } from '@material-ui/core';
 
 import DimensionsProvider from './DimensionsProvider';
 import SoundfontProvider from './SoundfontProvider';
@@ -21,8 +21,9 @@ export default class App extends React.Component {
       events: [],
       currentTime: 0,
       currentEvents: [],
-      firstNote: 'c4',
     },
+    firstNote: 'c4',
+    firstNoteTemp: 'c4',
   };
 
   constructor(props) {
@@ -45,7 +46,6 @@ export default class App extends React.Component {
       recording: Object.assign({}, this.state.recording, value),
     });
 
-    console.log('setRecording', value)
     const setNotes = this.state.line === "Counterpoint" ?
       this.props.setNotes2 : this.props.setNotes1
 
@@ -133,10 +133,13 @@ export default class App extends React.Component {
 
   render() {
 
+    const first = MidiNumbers.fromNote(this.state.firstNote)
+    const last = first + 23
 
     const noteRange = {
-      first: MidiNumbers.fromNote('c4'),
-      last: MidiNumbers.fromNote('c6'),
+      first, last
+      // first: MidiNumbers.fromNote('c4'),
+      // last: MidiNumbers.fromNote('c6'),
     };
     console.log('noteRange', noteRange)
 
@@ -150,6 +153,19 @@ export default class App extends React.Component {
     const setNotes = this.state.line === "Counterpoint" ?
       this.props.setNotes2 : this.props.setNotes1
 
+    const handleChange = (event) => {
+      const firstNoteTemp = event.target.value
+      this.setState({ firstNoteTemp })
+
+    };
+
+    const handleSubmit = (e) => {
+      const firstNote = this.state.firstNoteTemp
+      this.setState({ firstNote })
+
+      e.preventDefault()
+    }
+
     return (
       <div>
         <br />
@@ -159,6 +175,7 @@ export default class App extends React.Component {
           onClickClear={this.onClickClear}
         />
 
+        <br />
         <div className="mt-5">
           <SoundfontProvider
             instrumentName="acoustic_grand_piano"
@@ -178,34 +195,21 @@ export default class App extends React.Component {
             )}
           />
         </div>
-        <div className="mt-5">
-          {/* <button onClick={this.onClickPlay}>Play</button>
-          <button onClick={this.onClickStop}>Stop</button> */}
-          
-          {/* <Button
-            onClick={this.onClickClear}
-            variant='contained'
-            color='primary'
-          >
-            Clear Line
-          </Button> */}
 
-          {/* <button
-            onClick={() => this.onSave(this.props.setNotes1)}
-          >
-            Save Cantus Firmus
-          </button>
+        <form
+          onSubmit={handleSubmit}
+        >
+          <TextField
+            label='Lowest Note'
+            helperText='Press Enter'
 
-          <button
-            onClick={() => this.onSave(this.props.setNotes2)}
-          >
-            Save Counterpoint
-          </button> */}
-        </div>
-        <div className="mt-5">
-          {/* <div>{JSON.stringify(this.state.recording.events)}</div> */}
-          {/* <div>{JSON.stringify(midis)}</div> */}
-        </div>
+            value={this.state.firstNoteTemp}
+            onChange={handleChange}
+          />
+        </form>
+        {/* <br /> */}
+        {/* <br /> */}
+
       </div>
     );
   }

@@ -16,7 +16,7 @@ export default function RadioButtonsGroup({ setLine, setNotes, onClickClear }) {
 
   return (
     <FormControl component="fieldset">
-      <FormLabel>
+      <FormLabel component='legend'>
         Which line are you editing?
       </FormLabel>
       <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
