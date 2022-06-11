@@ -8,7 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { GitHub } from '@material-ui/icons';
 
-import Login from './Login';
+// import Login from './Login';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -39,7 +39,7 @@ export default function ButtonAppBar() {
                         <GitHub />
                     </IconButton>
 
-                    <Login />
+                    {/* <Login /> */}
                 </Toolbar>                
             </AppBar>
 

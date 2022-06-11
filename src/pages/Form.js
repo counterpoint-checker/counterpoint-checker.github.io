@@ -59,6 +59,9 @@ function NotesGrid(props) {
                     label='Notes'
                     value={props.notes}
                     onChange={(event) => props.setNotes(event.target.value)}
+                    InputProps={{
+                      readOnly: true,
+                    }}
                 />
             </Paper>
         </Grid>
@@ -69,8 +72,8 @@ export default function AutoGrid(props) {
     const classes = useStyles();
 
     const lines = [
-        'Notes: [note][#,b, ][octave]',
-        'e.g. C4, C#4',
+        // 'Notes: [note][#,b, ][octave]',
+        // 'e.g. C4, C#4',
         'Key: [note][#,b, ][m, ]',
         'e.g. C, C#, Cm, C#m',
     ];

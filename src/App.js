@@ -4,7 +4,7 @@ import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
-import { Typography, Paper, Grid, Box, MenuItem, TextField } from '@material-ui/core';
+import { Typography, Paper, Grid, Box, MenuItem, TextField, Toolbar } from '@material-ui/core';
 
 import { createMuiTheme, MuiThemeProvider, withStyles } from '@material-ui/core/styles';
 import { AbcNotation, Midi } from "@tonaljs/tonal";
@@ -15,6 +15,7 @@ import Form from './pages/Form';
 import Preview from './pages/Preview';
 import Graded from './pages/Graded';
 import Profile from './pages/Profile';
+import Piano from './piano/index'
 
 const useStyles = (theme) => ({
     root: {
@@ -37,9 +38,10 @@ const theme = createMuiTheme({
 });
 
 function toAbc(notes) {
-    // notes is a string of space-separated notes like A4 Bb5
-    return notes.split(' ').map(note => (
-        AbcNotation.scientificToAbcNotation(note)
+    return notes.map(note => (
+        AbcNotation.scientificToAbcNotation(
+            Midi.midiToNoteName(note)
+        )
     )).join(' | ');
 }
 
@@ -59,8 +61,8 @@ class App extends React.Component {
             key: 'C',
             clef1: 'Treble',
             clef2: 'Treble',
-            notes1: 'c4 d4 e4 f4 g4 a4 b4 c5',
-            notes2: 'c4 d4 e4 f4 g4 a4 b4 c5',
+            notes1: [],
+            notes2: [],
         }
 
         // 1 MEANS CANTUS FIRMUS
@@ -98,6 +100,11 @@ ${toAbc(this.state.notes2)}
 
     stages = () => ({
         Input: <div>
+            <Piano
+                setNotes1 = {(notes1) => this.setState({ notes1 })}
+                setNotes2 = {(notes2) => this.setState({ notes2 })}
+            />
+
             <Form
                 key1 = {this.state.key}
                 clef1 = {this.state.clef1}
@@ -111,10 +118,14 @@ ${toAbc(this.state.notes2)}
                 setNotes1 = {(notes1) => this.setState({ notes1 })}
                 setNotes2 = {(notes2) => this.setState({ notes2 })}
             />
+
             <Preview abc={this.abc} />
         </div>,
         Preview: <Preview abc={this.abc} />,
-        Grade: <Graded midi={this.midi} key1={this.state.key} />,
+        Grade: <Graded midi={[
+            this.state.notes1,
+            this.state.notes2,
+        ]} key1={this.state.key} />,
         Team: <Profile />,
     });
 
@@ -145,7 +156,7 @@ ${toAbc(this.state.notes2)}
     }
 
     render() {
-        const { classes, activeStep } = this.state;
+        const { classes, activeStep, notes1 } = this.state;
         const steps = Object.keys(this.stages());
         const contents = Object.values(this.stages());
 

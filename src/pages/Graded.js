@@ -49,7 +49,7 @@ class DataGridDemo extends React.Component {
     async componentDidMount() {
         const notes = 'c4 d4 e4 f4 g4 a4 b4 c5';
 
-        const [cantus_firmus, counterpoint] = this.props.midi();
+        const [cantus_firmus, counterpoint] = this.props.midi;
         const key = this.props.key1;
         const headers = {
             "Content-Type":"application/json",
